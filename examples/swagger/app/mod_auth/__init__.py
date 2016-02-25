@@ -1,0 +1,1 @@
+from app.mod_doc.controllers import auto

@@ -1,0 +1,24 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is an invalid version",
+    "version": "1.0.0",
+    "title": "Swagger version Invalid",
+    "termsOfService": "",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "Invalid",
+  "basePath": "/v0",
+  "tags": [
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {},
+  "securityDefinitions": {},
+  "definitions": {}
+}
