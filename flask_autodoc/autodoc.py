@@ -110,6 +110,23 @@ class Autodoc(object):
             return f
         return decorator
 
+    def parse_docstring(self, docstring):
+        acceptable = ["GET", "POST", "HEAD", "DELETE", "OPTIONS"]
+        if docstring:
+            ret = {}
+            header = None
+            for s in " ".join(docstring.split()).split("@"):
+                print s
+                if ":" in s and header in acceptable:
+                    key, val = s.split(":", 1)
+                    print key, val
+                    ret[header][key] = val
+                else:
+                    header = s.strip()
+                    ret[header] = {}
+            return ret
+        return {}
+
     def generate(self, groups='all', sort=None):
         """Return a list of dict describing the routes specified by the
         doc() method
@@ -156,6 +173,9 @@ class Autodoc(object):
                     defaults=rule.defaults,
                     location=location,
                 )
+                
+                props.update(self.parse_docstring(func.__doc__))
+
                 for p in func_props:
                     if p not in self.immutable_props:
                         props[p] = func_props[p]
